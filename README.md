@@ -47,6 +47,16 @@ Use display top 5: ./test_query.sh test.txt 1000 128 100 5
 The output is the zero-based base vector indices. One line corresponds to one query.
 Note that `<built_graph_row>` and `<built_graph_dimension>` have to be the row and dimensions of the ***base data*** (the data we built the index on).
 
+### Python Interface
+We create a python interface for easier use.
+Note that the conversion to numpy array to c-style array may yield some overhead.
+***For the best performance practice, please use the original C++ library.***
+```
+make mobius.so
+python test.py
+```
+Please read `test.py` for more details. Make sure you have compiled `mobius.so` and put `interface.py` in the current working directory (or python path directory).
+
 ## FAQ
 1. How can I change the parameters of the proximity graph, e.g., degree, searching budget in graph construction?
 We have two macros in *config.h*: `SEARCH_DEGREE` and `CONSTRUCT_SEARCH_BUDGET`. You can change them to your desired values.
